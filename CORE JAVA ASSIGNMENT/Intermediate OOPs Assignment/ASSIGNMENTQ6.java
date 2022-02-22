@@ -15,18 +15,20 @@ class DataBasePersistence extends Persistence{
 		return "Data Base Persistence Method";
 	}
 }
-class Client extends Persistence{
-
-	@Override
-	public String persist() {
-		return "Invokes a Persist Method";
+class Client {
+	public static Persistence getPersistence()
+	{
+		return new FilePersistence();
+		//return new DataBasePersistence();
 	}
+
+	
 }
 public class ASSIGNMENTQ6 {
 	public static void main(String[] args)
 	{
-		Client cl=new Client();
-		System.out.println(cl.persist());
+		Persistence Persis = Client.getPersistence();
+		System.out.println(Persis.persist());
 	}
 
 }
